@@ -8,9 +8,6 @@ app.use(express.static("public"));
 
 var PORT = process.env.PORT || 8080;
 
-// setting up handlebars
-var exphbs = require("express-handlebars");
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
