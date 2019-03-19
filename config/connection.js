@@ -2,13 +2,20 @@
 var mysql = require("mysql");
 
 // connection to mySQL to burgers_db
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "lavii677914744",
-  database: "burgers_db"
-});
+var connection;
+if (process.env.JAWSDB_URL) {
+    // Database is JawsDB on Heroku
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    // Database is local
+    connection = mysql.createConnection({
+        port: 3306,
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'burgers_db'
+    })
+};
 
 // the connection method to make sure connected
 connection.connect(function(err) {
